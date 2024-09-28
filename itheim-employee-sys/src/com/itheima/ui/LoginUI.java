@@ -1,14 +1,26 @@
 package com.itheima.ui;
 
+import com.itheima.bean.User;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class LoginUI extends JFrame {
-    private JTextField usernameField;
+public class LoginUI extends JFrame implements ActionListener{
+
+
+    private JTextField loginNameField;
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton registerButton;
+
+    private static ArrayList<User> allUsers = new ArrayList<User>();
+
+    static {
+        allUsers.add(new User("超级管理员", "123456", "admin"));
+        allUsers.add(new User("普通员工", "123456", "employee"));
+    }
 
     public LoginUI() {
         setTitle("用户管理系统");
@@ -25,9 +37,9 @@ public class LoginUI extends JFrame {
         usernameLabel.setBounds(30, 20, 80, 25);
         add(usernameLabel);
 
-        usernameField = new JTextField();
-        usernameField.setBounds(120, 20, 150, 25);
-        add(usernameField);
+        loginNameField = new JTextField();
+        loginNameField.setBounds(120, 20, 150, 25);
+        add(loginNameField);
 
         JLabel passwordLabel = new JLabel("密码:");
         passwordLabel.setBounds(30, 60, 80, 25);
@@ -45,28 +57,52 @@ public class LoginUI extends JFrame {
         registerButton.setBounds(170, 100, 100, 25);
         add(registerButton);
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // 登录逻辑
-                String username = usernameField.getText();
-                String password = new String(passwordField.getPassword());
-                System.out.println("用户名: " + username + ", 密码: " + password);
-                // 在这里可以添加验证逻辑
-            }
-        });
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // 注册逻辑
-                String username = usernameField.getText();
-                String password = new String(passwordField.getPassword());
-                System.out.println("注册用户名: " + username + ", 密码: " + password);
-                // 在这里可以添加注册逻辑
-            }
-        });
+        loginButton.addActionListener(this);
+
+        registerButton.addActionListener(this);
+
         setVisible(true);
 
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton btn = (JButton) e.getSource();
+        if(btn == loginButton) {
+            login();
+        } else if (btn == registerButton) {
+            System.out.println("注册");
+        }
+    }
+
+    private void login() {
+        String loginName = loginNameField.getText();
+        String password = new String(passwordField.getPassword());
+
+        User user = getUserByLoginName(loginName);
+        if (user != null) {
+            if (user.getPassword().equals(password)) {
+                System.out.println("登陆成功");
+                new EmployeeManagementUI(user.getUsername());//?????????
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this,"密码错误");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this,"用户不存在");
+        }
+
+    }
+
+    private User getUserByLoginName(String loginName) {
+        for (int i = 0; i < allUsers.size(); i++) {
+            User user = allUsers.get(i);
+            if(user.getLoginName().equals(loginName)){
+                return user;
+            }
+        }
+        return null;
     }
 }
 
