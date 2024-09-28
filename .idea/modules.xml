@@ -10,7 +10,9 @@
       <module fileurl="file://$PROJECT_DIR$/day07 -opp/day07 -opp.iml" filepath="$PROJECT_DIR$/day07 -opp/day07 -opp.iml" />
       <module fileurl="file://$PROJECT_DIR$/day09-oop/day09-oop.iml" filepath="$PROJECT_DIR$/day09-oop/day09-oop.iml" />
       <module fileurl="file://$PROJECT_DIR$/day1-helloworld-app/day1-helloworld-app.iml" filepath="$PROJECT_DIR$/day1-helloworld-app/day1-helloworld-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itheim-employee-sys/itheim-employee-sys.iml" filepath="$PROJECT_DIR$/itheim-employee-sys/itheim-employee-sys.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaseproject.iml" filepath="$PROJECT_DIR$/javaseproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/relearn-sum/relearn-sum.iml" filepath="$PROJECT_DIR$/relearn-sum/relearn-sum.iml" />
     </modules>
   </component>
 </project>
