@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/itheim-employee-sys/itheim-employee-sys.iml" filepath="$PROJECT_DIR$/itheim-employee-sys/itheim-employee-sys.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaseproject.iml" filepath="$PROJECT_DIR$/javaseproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/relearn-sum/relearn-sum.iml" filepath="$PROJECT_DIR$/relearn-sum/relearn-sum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stone-maze/stone-maze.iml" filepath="$PROJECT_DIR$/stone-maze/stone-maze.iml" />
     </modules>
   </component>
 </project>
