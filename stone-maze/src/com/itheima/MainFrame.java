@@ -8,6 +8,7 @@ public class MainFrame extends JFrame {
     private final static String imagePath = "stone-maze/src/image/";
     private int row;
     private int hol;
+    private int count = 0;
     //  创建一个数组，存储数字色块的行列位置
     private int[][] imageData = {
             {1, 2, 3, 4},
@@ -72,6 +73,7 @@ public class MainFrame extends JFrame {
                     imageData[row][hol] = imageData[row + 1][hol];
                     imageData[row + 1][hol] = temp;
                     row++;
+                    count ++;
                 }
                 break;
             case DOWN:
@@ -80,6 +82,7 @@ public class MainFrame extends JFrame {
                     imageData[row][hol] = imageData[row - 1][hol];
                     imageData[row - 1][hol] = temp;
                     row--;
+                    count ++;
                 }
                 break;
             case LEFT:
@@ -88,6 +91,7 @@ public class MainFrame extends JFrame {
                     imageData[row][hol] = imageData[row][hol + 1];
                     imageData[row][hol + 1] = temp;
                     hol++;
+                    count++;
                 }
                 break;
             case RIGHT:
@@ -96,6 +100,7 @@ public class MainFrame extends JFrame {
                     imageData[row][hol] = imageData[row][hol - 1];
                     imageData[row][hol - 1] = temp;
                     hol--;
+                    count++;
                 }
                 break;
         }
@@ -141,7 +146,8 @@ public class MainFrame extends JFrame {
         JMenuItem restartJi = new JMenuItem("重启");
         menu.add(restartJi);
         restartJi.addActionListener(e -> {
-
+            initRandomArray();
+            initImage();
         });
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
@@ -149,6 +155,10 @@ public class MainFrame extends JFrame {
 
     private void initImage() {
         this.getContentPane().removeAll();
+        
+        JLabel countTxt = new JLabel("当前移动" + count + "步");
+        countTxt.setBounds(0 ,0 , 100, 20);
+        this.add(countTxt);
 
         if(isWin()) {
             JLabel label = new JLabel(new ImageIcon(imagePath + "win.png"));

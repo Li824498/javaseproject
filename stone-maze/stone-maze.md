@@ -211,3 +211,11 @@ public class MainFrame extends JFrame {
             this.add(label);
         }
 ```
+
+# 5、统计移动步骤、重启游戏
++ 没成功移动一步、累加步数
++ 定义变量
+
+# 6、拓展问题
++ 无解问题
++ 模拟用户打乱
